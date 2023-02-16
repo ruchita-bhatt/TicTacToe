@@ -48,8 +48,52 @@ public class GameBoardTest {
         assertFalse(gameBoard.isPositionInRange(testPosition));
     }
 
+    @Test
+    @DisplayName("when no winner found should return false")
+    public void shouldReturnFalseIfNoWinnerFound() {
+        gameBoard.initializeGameBoard();
+        gameBoard.getBoard();
+
+        assertFalse(gameBoard.checkForWinner());
+    }
+
+    @Test
+    @DisplayName("Return true when Player win by following same row")
+    public void shouldReturnTrueIfPlayerFollowSameRow() {
+        int[] positions = new int[] { 3, 4, 5 };
+        initializeBoardWithMoves(positions);
+
+        assertTrue(gameBoard.checkForWinner());
+    }
+
+    @Test
+    @DisplayName("Return true when Player win by folwing same column")
+    public void shouldReturnTrueIfPlayerFollowSameColumn() {
+        int[] positions = new int[] { 2, 5, 8 };
+        initializeBoardWithMoves(positions);
+
+        assertTrue(gameBoard.checkForWinner());
+    }
+
+    @Test
+    @DisplayName("Return true when Player win by folwing same diagonal")
+    public void shouldReturnTrueIfPlayerFollowSameDiagonal() {
+        int[] positions = new int[] { 0, 4, 8 };
+        initializeBoardWithMoves(positions);
+
+        assertTrue(gameBoard.checkForWinner());
+    }
+
     private static Stream<Arguments> invalidPositionsProvider() {
         return Stream.of(arguments(INVALID_NEGATIVE_POSITION), arguments(
                 INVALID_POSITIVE_POSITION_NINE), arguments(INVALID_POSITIVE_POSITION_ELEVEN));
+    }
+
+    private void initializeBoardWithMoves(int[] positions) {
+        gameBoard.initializeGameBoard();
+        String[] board = gameBoard.getBoard();
+        for (int index = 0; index < positions.length; index++) {
+            board[positions[index]] = PLAYER_X;
+        }
     }
 }

@@ -6,6 +6,8 @@ public class GameConstants {
 
     public static final String PLAYER_X = "X";
     public static final String PLAYER_O = "O";
+    public static final String PLAYER_X_WINNING_PATTERN = "XXX";
+    public static final String PLAYER_O_WINNING_PATTERN = "OOO";
 
     // Messages
     public static final String POSITION_NOT_IN_RANGE_MESSAGE = "Invalid Position. Please enter a value between 1 to 9";
