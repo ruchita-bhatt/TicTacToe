@@ -16,4 +16,7 @@ public class GameConstants {
     public static final String PLAYER_MESSAGE = "Player ";
     public static final String WINNER_MESSAGE = " wins the game";
     public static final String GAME_DRAW_MESSAGE = "Game is draw !!";
+    public static final String GAME_OVER_MESSAGE = "Game Over !! ";
+    public static final String MAKE_A_MOVE_MESSAGE = " please make a move";
+    public static final String INVALID_INPUT_MESSAGE = "Invalid Input. Please enter one value between 1 to 9";
 }

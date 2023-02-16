@@ -27,7 +27,7 @@ public class PlayerAction {
 
     private String performActionToHandleNextMove(int position) throws PositionIsOccupiedException {
         if (gameBoard.getBoard()[position].equals(PLAYER_O) || gameBoard.getBoard()[position].equals(PLAYER_X)) {
-            throw new PositionIsOccupiedException(POSITION_NOT_IN_RANGE_MESSAGE);
+            throw new PositionIsOccupiedException(POSITION_IS_OCCUPIED_MESSAGE);
         } else {
             updateBoardWithMove(position);
         }
@@ -50,5 +50,13 @@ public class PlayerAction {
             return GAME_DRAW_MESSAGE;
         }
         return EMPTY_STRING;
+    }
+
+    public void initializeGameBoard() {
+        gameBoard.initializeGameBoard();
+    }
+
+    public void displayBoard() {
+        gameBoard.displayBoard();
     }
 }
