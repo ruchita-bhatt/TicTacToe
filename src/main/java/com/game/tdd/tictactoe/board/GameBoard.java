@@ -4,6 +4,8 @@ import org.springframework.stereotype.Component;
 
 import static com.game.tdd.tictactoe.constants.GameConstants.*;
 
+import java.util.Arrays;
+
 @Component
 public class GameBoard {
     private String[] board;
@@ -57,5 +59,10 @@ public class GameBoard {
         }
 
         return isWinnerFound;
+    }
+
+    public boolean checkForDraw() {
+        return Arrays.asList(board).stream()
+                .allMatch(element -> element.equals(PLAYER_O) || element.equals(PLAYER_X));
     }
 }

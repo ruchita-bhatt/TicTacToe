@@ -84,6 +84,24 @@ public class GameBoardTest {
         assertTrue(gameBoard.checkForWinner());
     }
 
+    @Test
+    @DisplayName("Return false when game is not draw")
+    public void shouldReturnFalseIfGameIsNotDraw() {
+        int[] positions = new int[] { 0, 4, 8 };
+        initializeBoardWithMoves(positions);
+
+        assertFalse(gameBoard.checkForDraw());
+    }
+
+    @Test
+    @DisplayName("Return true when game is draw")
+    public void shouldReturnTrueIfGameIsDraw() {
+        int[] positions = new int[] { 0, 1, 2, 3, 6, 4, 5, 8, 7 };
+        initializeBoardWithMoves(positions);
+
+        assertTrue(gameBoard.checkForDraw());
+    }
+
     private static Stream<Arguments> invalidPositionsProvider() {
         return Stream.of(arguments(INVALID_NEGATIVE_POSITION), arguments(
                 INVALID_POSITIVE_POSITION_NINE), arguments(INVALID_POSITIVE_POSITION_ELEVEN));
