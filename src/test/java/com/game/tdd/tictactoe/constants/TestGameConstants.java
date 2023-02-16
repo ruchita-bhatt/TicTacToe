@@ -9,4 +9,9 @@ public class TestGameConstants {
 
     public static final String PLAYER_X = "X";
     public static final String PLAYER_O = "O";
+    public static final String EMPTY = "";
+
+    public static final String PLAYER_X_WINNING_MESSAGE = "Player X wins the game";
+    public static final String PLAYER_O_WINNING_MESSAGE = "Player O wins the game";
+    public static final String GAME_DRAW_MESSAGE = "Game is draw !!";
 }
