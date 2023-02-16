@@ -39,7 +39,7 @@ public class TicTacToeGameExecutor {
     }
 
     public void validateUserInput(String input) throws InvalidInputException {
-        if (!input.matches("\\d"))
+        if (!input.matches(VALID_INPUT_PATTERN))
             throw new InvalidInputException(INVALID_INPUT_MESSAGE);
     }
 }
