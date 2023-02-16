@@ -15,7 +15,9 @@ import org.springframework.boot.test.mock.mockito.MockBean;
 import com.game.tdd.tictactoe.exception.PositionIsOccupiedException;
 import com.game.tdd.tictactoe.exception.PositionOutOfRangeException;
 
-@SpringBootTest(properties = { "application.runner.enabled=false" })
+import static com.game.tdd.tictactoe.constants.TestGameConstants.*;
+
+@SpringBootTest
 public class PlayerActionTest {
 
     @Autowired
@@ -27,7 +29,7 @@ public class PlayerActionTest {
     @Test
     @DisplayName("Game should throw exeption if Position is not in board range")
     void throwExceptionIfPositionNotInRange() {
-        int position = 10;
+        int position = INVALID_POSITIVE_POSITION_ELEVEN;
         when(gameBoard.isPositionInRange(anyInt())).thenReturn(false);
         assertThrows(PositionOutOfRangeException.class, () -> playerAction.placePlayerMove(position));
     }
@@ -35,7 +37,7 @@ public class PlayerActionTest {
     @Test
     @DisplayName("Game should throw exeption if Position is already occupied")
     void throwExceptionIfPositionIsOccupied() {
-        int position = 6;
+        int position = VALID_POSITION_SIX;
         when(gameBoard.isPositionInRange(anyInt())).thenReturn(true);
         when(gameBoard.getBoard()).thenReturn(new String[] { "1", "2", "3", "4", "5", "X", "7", "8", "9" });
 
@@ -45,22 +47,22 @@ public class PlayerActionTest {
     @Test
     @DisplayName("Place the move by updating board without any exception")
     void placeTheMoveWithoutException() {
-        int position = 5;
+        int position = VALID_POSITION_FIVE;
         when(gameBoard.isPositionInRange(anyInt())).thenReturn(true);
         when(gameBoard.getBoard()).thenReturn(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
         assertDoesNotThrow(() -> playerAction.placePlayerMove(position));
-        assertEquals("O", gameBoard.getBoard()[position - 1]);
+        assertEquals(PLAYER_O, gameBoard.getBoard()[position - 1]);
     }
 
     @Test
     @DisplayName("Should update the next Player based on current move")
     void shouldUpdateNextPlayer() throws PositionOutOfRangeException, PositionIsOccupiedException {
-        int position = 5;
+        int position = VALID_POSITION_FIVE;
         when(gameBoard.isPositionInRange(anyInt())).thenReturn(true);
         when(gameBoard.getBoard()).thenReturn(new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" });
 
         playerAction.placePlayerMove(position);
-        assertEquals("O", playerAction.getNextPlayer());
+        assertEquals(PLAYER_O, playerAction.getNextPlayer());
     }
 }

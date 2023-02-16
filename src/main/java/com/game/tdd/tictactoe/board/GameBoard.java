@@ -2,6 +2,8 @@ package com.game.tdd.tictactoe.board;
 
 import org.springframework.stereotype.Component;
 
+import static com.game.tdd.tictactoe.constants.GameConstants.*;
+
 @Component
 public class GameBoard {
     private String[] board;
@@ -15,6 +17,6 @@ public class GameBoard {
     }
 
     public boolean isPositionInRange(int position) {
-        return position >= 0 && position < 9;
+        return position >= LOWER_BOUND && position < UPPER_BOUND;
     }
 }

@@ -5,6 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.params.provider.Arguments.arguments;
+import static com.game.tdd.tictactoe.constants.TestGameConstants.*;
 
 import java.util.stream.Stream;
 
@@ -37,8 +38,7 @@ public class GameBoardTest {
     @Test
     @DisplayName("Check for Position to be in board range")
     void positionInBoardRange() {
-        int testPosition = 5;
-        assertTrue(gameBoard.isPositionInRange(testPosition));
+        assertTrue(gameBoard.isPositionInRange(VALID_POSITION_FIVE));
     }
 
     @ParameterizedTest
@@ -49,6 +49,7 @@ public class GameBoardTest {
     }
 
     private static Stream<Arguments> invalidPositionsProvider() {
-        return Stream.of(arguments(-1), arguments(9), arguments(11));
+        return Stream.of(arguments(INVALID_NEGATIVE_POSITION), arguments(
+                INVALID_POSITIVE_POSITION_NINE), arguments(INVALID_POSITIVE_POSITION_ELEVEN));
     }
 }
