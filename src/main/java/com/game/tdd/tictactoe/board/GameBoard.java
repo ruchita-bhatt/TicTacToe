@@ -5,13 +5,16 @@ import org.springframework.stereotype.Component;
 import static com.game.tdd.tictactoe.constants.GameConstants.*;
 
 import java.util.Arrays;
+import java.util.stream.IntStream;
 
 @Component
 public class GameBoard {
     private String[] board;
 
     public void initializeGameBoard() {
-        board = new String[] { "1", "2", "3", "4", "5", "6", "7", "8", "9" };
+        board = new String[UPPER_BOUND];
+        IntStream.range(BOARD_LOWER_BOUND, BOARD_UPPER_BOUND)
+                .forEach((index) -> board[index - 1] = String.valueOf(index));
     }
 
     public String[] getBoard() {

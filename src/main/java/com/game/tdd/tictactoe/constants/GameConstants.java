@@ -3,6 +3,8 @@ package com.game.tdd.tictactoe.constants;
 public class GameConstants {
     public static final int LOWER_BOUND = 0;
     public static final int UPPER_BOUND = 9;
+    public static final int BOARD_LOWER_BOUND = 1;
+    public static final int BOARD_UPPER_BOUND = 10;
 
     public static final String PLAYER_X = "X";
     public static final String PLAYER_O = "O";

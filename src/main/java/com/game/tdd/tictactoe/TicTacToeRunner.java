@@ -1,12 +1,10 @@
-package com.game.tdd;
+package com.game.tdd.tictactoe;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Component;
-
-import com.game.tdd.tictactoe.TicTacToeGameExecutor;
 
 import static com.game.tdd.tictactoe.constants.GameConstants.*;
 
