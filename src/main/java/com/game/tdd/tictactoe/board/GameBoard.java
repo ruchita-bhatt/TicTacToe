@@ -13,4 +13,8 @@ public class GameBoard {
     public String[] getBoard() {
         return board;
     }
+
+    public boolean isPositionInRange(int position) {
+        return position >= 0 && position < 9;
+    }
 }
